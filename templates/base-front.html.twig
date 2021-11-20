@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+    <link rel="stylesheet" href="front-office\style.css">
+    <link rel="stylesheet" href="front-office\style2.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+
+<div class="sidebar open  ">
+    <div class="logo-details">
+        <i class='bx bxl-c-plus-plus icon'></i>
+        <div class="logo_name">Sadak@</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+        <!-- <li>
+            <i class='bx bx-search' ></i>
+            <input type="text" placeholder="Search...">
+            <span class="tooltip">Search</span>
+          </li> -->
+        <li>
+            <a href="#">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Acceuil</span>
+            </a>
+            <span class="tooltip">Acceuil</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-user' ></i>
+                <span class="links_name">Événements</span>
+            </a>
+            <span class="tooltip">Événements</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-chat' ></i>
+                <span class="links_name">Magasin</span>
+            </a>
+            <span class="tooltip">Magasin</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-pie-chart-alt-2' ></i>
+                <span class="links_name">Services</span>
+            </a>
+            <span class="tooltip">Services</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-folder' ></i>
+                <span class="links_name">Options Avancées</span>
+            </a>
+            <span class="tooltip">Options Avancées</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-cart-alt' ></i>
+                <span class="links_name">À propos</span>
+            </a>
+            <span class="tooltip">À propos</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-heart' ></i>
+                <span class="links_name">Contact</span>
+            </a>
+            <span class="tooltip">Contact</span>
+        </li>
+        <!-- <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Setting</span>
+          </a>
+          <span class="tooltip">Setting</span>
+        </li> -->
+
+    </ul>
+</div>
+<section class="home-section">
+    <div class="text"></div>
+    <div class="search-box ">
+        <input type="text" placeholder="Type to search.." class="">
+        <div class="search-icon ">
+            <i class="fas fa-search "></i>
+        </div>
+        <div class="cancel-icon">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="search-data">
+        </div>
+    </div>
+    {% block aziz %}
+    <div>
+        <h1>aziz</h1>
+    </div>
+    {% endblock %}
+
+</section>
+<!-- <script>
+let sidebar = document.querySelector(".sidebar");
+let closeBtn = document.querySelector("#btn");
+let searchBtn = document.querySelector(".bx-search");
+
+closeBtn.addEventListener("click", ()=>{
+  sidebar.classList.toggle("open");
+  menuBtnChange();//calling the function(optional)
+});
+
+searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+  sidebar.classList.toggle("open");
+  menuBtnChange(); //calling the function(optional)
+});
+
+// following are the code to change sidebar button(optional)
+function menuBtnChange() {
+ if(sidebar.classList.contains("open")){
+   closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+ }else {
+   closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+ }
+}
+</script> -->
+
+
+<div class="menu-container">
+
+    <div class="top-navbar"></div>
+    <div class="button">
+        Utlisateur
+        <span class="fas fa-bars"></span>
+    </div>
+    <ul class="test">
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Se déconnecter</a></li>
+    </ul>
+</div>
+
+
+
+<script src="script.js"></script>
+
+<script>
+    const searchBox = document.querySelector(".search-box");
+    const searchBtn = document.querySelector(".search-icon");
+    const cancelBtn = document.querySelector(".cancel-icon");
+    const searchInput = document.querySelector("input");
+    const searchData = document.querySelector(".search-data");
+    searchBtn.onclick =()=>{
+        searchBox.classList.add("active");
+        searchBtn.classList.add("active");
+        searchInput.classList.add("active");
+        cancelBtn.classList.add("active");
+        searchInput.focus();
+        if(searchInput.value != ""){
+            var values = searchInput.value;
+            searchData.classList.remove("active");
+            searchData.innerHTML = "You just typed " + "<span style='font-weight: 500;'>" + values + "</span>";
+        }else{
+            searchData.textContent = "";
+        }
+    }
+    cancelBtn.onclick =()=>{
+        searchBox.classList.remove("active");
+        searchBtn.classList.remove("active");
+        searchInput.classList.remove("active");
+        cancelBtn.classList.remove("active");
+        searchData.classList.toggle("active");
+        searchInput.value = "";
+    }
+</script>
+<script>
+    $(document).ready(function(){
+        $('.button').click(function(){
+            if($(this).hasClass('expand')){
+                $('.test').slideUp(function(){
+                    $('.button').removeClass('expand');
+                    $('.fas').removeClass('expand')
+                });
+            }else{
+                $(this).addClass('expand');
+                setTimeout(function(){
+                    $('.fas').addClass('expand');
+                    $('ul').stop().slideDown();
+                },200);
+            }
+        });
+    });
+</script>
+</body>
+</html>

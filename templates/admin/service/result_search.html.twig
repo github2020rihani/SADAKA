@@ -1,0 +1,38 @@
+<table class="table">
+    <thead class=" text-primary">
+    <th>Titre</th>
+    <th>Description</th>
+    <th>Numéro vert</th>
+    <th>Zone dispo</th>
+    <th>Type</th>
+    <th class="text-center">Action</th>
+    </thead>
+    {% for s in services %}
+        <tr>
+            <td>{{ s.name }}</td>
+            <td>{%  if s.description|length <= 60  %} {{ s.description}} {% else %} {{ s.description|slice(0,60) }}...{% endif %}</td>
+            <td>{{ s.numVert }}</td>
+            <td>{{ s.zoneDispo }}</td>
+            <td>{{ s.type.name }}</td>
+            <td class="text-center">
+                <a class="btn btn-sm btn-info"
+                   href="{{ path('edit_service' , {service : s.id}) }}"><i
+                            class="fa fa-edit"></i></a>
+                <a class="btn btn-sm btn-info"
+                   href="{{ path('detail_service' , {service : s.id}) }}"><i
+                            class="fa fa-eye"></i></a>
+                <a class="btn btn-sm btn-info"
+                   href="{{ path('delete_service' , {service : s.id}) }}"><i
+                            class="fa fa-trash"></i></a>
+
+
+            </td>
+        </tr>
+
+    {% endfor %}
+</table>
+
+<div class="pull-right">
+    {{ knp_pagination_render(services) }}
+
+</div>
